@@ -1,0 +1,9 @@
+gcc -m64 -fopenmp -D_OPENMP -O -DSTREAM_ARRAY_SIZE=100000000 stream.c -o stream.100M
+
+For Cascade Lake - perhaps
+gcc -mavx512f -Ofast -fargument-noalias -fopenmp stream.c -o stream
+
+For all cases - it could be that we will just take march=native to let GCC do its magic based on the processor arch
+
+gcc -march=native -Ofast -fargument-noalias -fopenmp stream.c -o stream
+
